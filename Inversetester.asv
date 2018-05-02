@@ -1,0 +1,28 @@
+%M and m-1 calculator
+clear all 
+clc
+format LONG;
+x=[43,47,53,59,61];
+range=prod(x);
+inpu=1677696;
+ip=RNSConv(inpu);
+k=length(x);
+i=1;
+minv=zeros(1,k);
+while i<=k
+    m(i)=range/x(i);
+    m1(i)=mod(m(i),x(i));
+    minv(i)=mulinv(m(i),x(i));
+    i=i+1;
+end
+x1=minv.*m;
+maxvalue=sum((x-1).*minv.*m);
+x1=x1.*ip;
+k=sum(x1)/range;
+re=rem(sum(x1),range);
+disp('The sum is:');
+disp(sum(x1));
+disp('The quotient is:');
+disp(floor(k));
+disp('The remainder is:');
+disp(ceil(re));
