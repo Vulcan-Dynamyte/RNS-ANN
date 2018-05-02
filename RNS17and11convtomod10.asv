@@ -1,6 +1,0 @@
-function [ k ] = RNS17and11convtomod10( l,m )
-a=17*mulinv(17,11)*l+11*mulinv(11,17)*m;
-k=mod(a,187);
-k=mod(k,10);
-end
-

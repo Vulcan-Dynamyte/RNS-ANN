@@ -1,0 +1,38 @@
+function [ ext ] = mod10regen( inp )
+format LONG;
+x=[43,47,53,59,61];
+range=prod(x);
+i=1;
+k=length(x);
+while i<=k
+    ip(i)=inp(3+i);
+    i=i+1;
+end
+i=1;
+minv=zeros(1,k);
+while i<=k
+    m(i)=range/x(i);
+    m1(i)=mod(m(i),x(i));
+    minv(i)=mulinv(m(i),x(i));
+    i=i+1;
+end
+x1=minv.*m;
+unadjres=sum(ip.*minv.*m);
+i=1;
+while i<=2
+    b(i)=inp(i+1);
+    i=i+1;
+end
+j=[mod(sum(unadjres),11)-b(1),mod(sum(unadjres),17)-b(2)];
+c=RNS17and11convtomod10(j(1),j(2));
+d1=[mod(sum(unadjres),11),mod(sum(unadjres),17)];
+p=d1-b;
+mi=[mulinv(1,11),mulinv(3,17)];
+d=p.*mi;
+d(1)=mod(d(1),11);
+d(2)=mod(d(2),17);
+no=RNS17and11convtomod10(d(1),d(2));
+val=mod(sum(unadjres),10)-7*no;
+ext=mod(val,10);
+end
+
